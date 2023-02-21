@@ -1,0 +1,35 @@
+			SQL ASSIGNMENT-1
+
+1) SELECT * FROM Emp where DeptNo IN(10, 30);
+2) SELECT Dept.Deptno, Dept.Dname, Dept.Loc FROM Dept INNER JOIN Emp ON Dept.DeptNo = Emp.DeptNo  GROUP BY Dept.DeptNo HAVING COUNT(*)>1;
+3) SELECT * FROM Emp WHERE Ename LIKE 'S%';
+4) SELECT * FROM emp WHERE EXTRACT (YEAR FROM age(CURRENT_DATE, hiredate)) > 2;
+5) SELECT REPLACE(ename, 'a','#') AS Ename FROM emp;
+6) SELECT ename, mgr FROM emp;
+7) SELECT dept.dname, SUM(emp.sal) FROM dept INNER JOIN emp ON dept.deptno = emp.deptno GROUP BY dept.dname;
+8) SELECT * FROM dept RIGHT JOIN emp ON dept.deptno = emp.deptno;
+9) UPDATE emp SET sal = sal + (sal * (10/100));
+10) DELET FROM emp WHERE deptno IN (SELECT deptno FROM dept WHERE loc='chennai');
+11) SELECT ename, COALESCE((sal + commission), sal) AS gross_salary FROM emp;
+12) ALTER TABLE emp ALTER COLUMN ename TYPE VARCHAR(250);
+13) SELECT NOW();
+14) CREATE TABLE Student(StudentId int NOT NULL PRIMARY KEY, Name varchar(100) NOT NULL, Age int NOT NULL, Email varchar(150), City varchar(100) NOT NULL);
+15) SELECT COUNT(*) FROM emp WHERE sal > 10000;
+16) SELECT MIN(sal), MAX(sal),ROUND( AVG(sal)) FROM emp;
+17) SELECT dept.loc, COUNT(*)  FROM dept INNER JOIN emp ON dept.deptno = emp.deptno GROUP BY dept.loc ;
+18) SELECT ename FROM emp ORDER BY ename DESC;
+19) CREATE TABLE emp_bkp AS SELECT * FROM emp;
+20) SELECT CONCAT(SUBSTRING(ename, 1, 3), sal) AS user FROM emp;
+21) SELECT * FROM emp WHERE ename LIKE 's%';
+22) SELECT * FROM dept INNER JOIN emp ON dept.deptno = emp.deptno WHERE loc = 'bangalore';
+23) SELECT * FROM emp WHERE ename BETWEEN 'A' AND 'K';
+24) SELECT ename FROM emp WHERE mgr IN (SELECT empno FROM emp WHERE ename = 'stefen');
+25) SELECT enmae FROM emp GROUP BY mgr HAVING COUNT(*)=(SELECT MAX(COUNT(mgr)) FROM EMP GROUP BY mgr);
+26) SELECT * FROM dept, emp WHERE emp.sal = (SELECT MAX(sal) FROM emp WHERE sal < (SELECT MAX(sal) FROM emp)) AND dept.deptno = emp.deptno;
+27) SELECT * FROM emp WHERE empno IN(SELECT mgr FROM emp);
+28) SELECT empno, ename, sal, hiredate, commission, deptno, age(current_date, hiredate) AS experience FROM emp WHERE empno IN(SELECT mgr FROM emp);
+29) SELECT ename FROM emp, dept  WHERE (empno IN (SELECT mgr FROM emp)) AND (commission < 1000) AND (dept.loc='dehli');
+30) SELECT * FROM emp WHERE hiredate < (SELECT hiredate FROM emp WHERE ename = 'martin');
+
+
+
